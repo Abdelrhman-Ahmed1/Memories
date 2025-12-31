@@ -1,1 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>سري للغاية</title>
 
+<style>
+* { box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* Login Box */
+.login-box {
+  text-align: center;
+  background: rgba(255,255,255,0.1);
+  padding: 40px;
+  border-radius: 20px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.heart-lock {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+  position: relative;
+  transform: rotate(-45deg);
+  background: #ff4d6d;
+  border-radius: 20px;
+}
+.heart-lock::before,
+.heart-lock::after {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: #ff4d6d;
+  border-radius: 50%;
+}
+.heart-lock::before { top: -60px; left: 0; }
+.heart-lock::after { left: 60px; top: 0; }
+
+.lock-hole {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+button {
+  margin-top: 15px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: #ff4d6d;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Celebration */
+.celebration {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-image: url("2151387527.jpg");
+  background-size: cover;
+  background-position: center;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 160px 40px 40px; /* مساحة أعلى للعنوان */
+  animation: fadeIn 1s ease;
+}
+
+
+.celebration h1 {
+  font-size: 2.5em;
+  animation: pop 1s ease infinite alternate;
+  background: rgba(255,255,255,0.15);
+  border-radius: 15px;
+  
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 35px;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  z-index: 10;
+  text-align: center;
+}
+
+
+.romantic-text {
+  max-width: 700px;
+  text-align: center;
+  font-size: 1.2em;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  animation: fadeUp 2s ease;
+}
+
+
+/* Memories Section */
+.memories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+}
+.romantic-text,
+.memories {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.memory {
+  background: rgba(255,255,255,0.15);
+  border-radius: 15px;
+  overflow: hidden;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition: transform 0.4s;
+}
+
+.memory:hover {
+  transform: scale(1.05);
+}
+
+.memory img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.memory p {
+  padding: 10px;
+  text-align: center;
+  font-size: 0.95em;
+}
+
+/* Fireworks */
+.firework {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: gold;
+  border-radius: 50%;
+  animation: explode 1.5s linear infinite;
+}
+
+/* Animations */
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+@keyframes pop { from {transform:scale(1);} to {transform:scale(1.1);} }
+@keyframes explode { from {transform:scale(1);opacity:1;} to {transform:scale(8);opacity:0;} }
+@keyframes fadeUp { from {opacity:0; transform: translateY(30px);} to {opacity:1; transform:translateY(0);} }
+
+</style>
+</head>
+
+<body>
+
+<div class="login-box" id="login">
+  <div class="heart-lock"><div class="lock-hole"></div></div>
+  <h2>Enter the Password ❤️</h2>
+  <input type="password" id="password" placeholder="••••" />
+  <button onclick="unlock()">ادخل</button>
+</div>
+
+<div class="celebration" id="celebration">
+
+  <h1>❤️ Happy New Year 2026 ❤️</h1>
+
+  <div class="romantic-text">
+    <p>
+      ❤️ كل سنة وإنتِي طيبة يا احلي هبه في الدنيا ❤️<br>
+      <br>
+      ويارب تكون سنة حلوة وجميلة ليكي ولكل اهلك يارب <br>
+      <br>
+     ❤️ ونفضل دايما سوا ومنسمحش لاي حاجه انها تبعدنا ابدا نهاااائي <br>
+      <br>
+     ❤️ وافضل دايما جنبك وفي ضهرك واعمل الحاجه اللي تسعدك وتفرحك ايا كانت هي ايه <br>
+      <br>
+     ❤️ وتفضلي دايما مبسوطة وبتشجعيني  علي اي حاجه بعملها او بحققها <br>
+      <br>
+     ❤️ اي رسالة هحب اوصلهالك هتكون هنا عشان محدش يقدر يشوفها غيرك <br>
+      <br> 
+    </p>
+  </div>
+
+  <!-- Memories -->
+  <div class="memories">
+    <div class="memory">
+      <img src="IMG_20240226_001632_837.JPG">
+      <p>❤️ أول ذكرى </p>
+    </div>
+
+    <div class="memory">
+      <img src="IMG-20241228-WA0033.jpg">
+      <p>❤️ اول هدية </p>
+    </div>
+
+    <div class="memory">
+      <img src="20250227_142149.jpg">
+      <p>❤️ اول رسمة </p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const correctPassword = '1195';
+
+function unlock() {
+  const input = document.getElementById('password').value;
+  if (input === correctPassword) {
+    document.getElementById('login').style.display = 'none';
+    const celeb = document.getElementById('celebration');
+    celeb.style.display = 'flex';
+    createFireworks();
+  } else {
+    alert('Wrong password 💔');
+  }
+}
+
+function createFireworks() {
+  for (let i = 0; i < 30; i++) {
+    const fw = document.createElement('div');
+    fw.className = 'firework';
+    fw.style.left = Math.random() * 100 + 'vw';
+    fw.style.top = Math.random() * 100 + 'vh';
+    fw.style.animationDelay = Math.random() + 's';
+    document.body.appendChild(fw);
+  }
+}
+</script>
+
+</body>
+</html>
